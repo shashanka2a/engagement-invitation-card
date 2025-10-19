@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   description: "Join us in celebrating the engagement of Sharath Reddy & Neetha Meghana on Friday, 24th October 2025",
   keywords: ["engagement", "wedding", "invitation", "Sharath Reddy", "Neetha Meghana"],
   authors: [{ name: "Bloomora" }],
+  icons: {
+    icon: "/ring-favicon.svg",
+    shortcut: "/ring-favicon.svg",
+    apple: "/ring-favicon.svg",
+  },
   openGraph: {
     title: "Engagement Invitation - Sharath Reddy & Neetha Meghana",
     description: "Join us in celebrating the engagement of Sharath Reddy & Neetha Meghana on Friday, 24th October 2025",

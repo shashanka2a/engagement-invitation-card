@@ -98,50 +98,28 @@ export default function App() {
               </h1>
             </motion.div>
 
-            {/* Parents Names */}
+            {/* Hosted By */}
             <motion.div 
-              className="text-center mb-12 space-y-6"
+              className="text-center mb-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              <div className="space-y-1">
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '0.95rem',
-                  color: '#5C4A3D'
-                }}>
-                  Son of
-                </p>
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '1.1rem',
-                  color: '#2C1810'
-                }}>
-                  Mr. & Mrs. Rajendra Reddy
-                </p>
-              </div>
-
-              <div className="flex justify-center">
-                <div className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-              </div>
-
-              <div className="space-y-1">
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '0.95rem',
-                  color: '#5C4A3D'
-                }}>
-                  Daughter of
-                </p>
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '1.1rem',
-                  color: '#2C1810'
-                }}>
-                  Mr. & Mrs. Srinivas Meghana
-                </p>
-              </div>
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: '0.95rem',
+                color: '#5C4A3D',
+                marginBottom: '0.5rem'
+              }}>
+                Hosted by
+              </p>
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: '1.1rem',
+                color: '#2C1810'
+              }}>
+                Gogula Somi Reddy & Vimala
+              </p>
             </motion.div>
 
             {/* Divider */}
@@ -235,7 +213,16 @@ export default function App() {
               fontSize: '0.875rem',
               color: '#8B7355'
             }}>
-              made with 💛 by Bloomora
+              made with 💛 by{' '}
+              <a 
+                href="https://bloomora.dev/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline hover:text-[#D4AF37] transition-colors duration-300"
+                style={{ color: '#8B7355' }}
+              >
+                Bloomora
+              </a>
             </p>
           </motion.div>
         </motion.div>
