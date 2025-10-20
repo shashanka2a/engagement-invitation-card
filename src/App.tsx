@@ -111,7 +111,7 @@ export default function App() {
                 color: '#5C4A3D',
                 marginBottom: '0.5rem'
               }}>
-                Hosted by
+                Invited by
               </p>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
