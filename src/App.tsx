@@ -213,15 +213,15 @@ export default function App() {
               fontSize: '0.875rem',
               color: '#8B7355'
             }}>
-              made with 💛 by{' '}
+              powered by{' '}
               <a 
-                href="https://bloomora.dev/" 
+                href="https://knotify.sh/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="underline hover:text-[#D4AF37] transition-colors duration-300"
                 style={{ color: '#8B7355' }}
               >
-                Bloomora
+                Knotify
               </a>
             </p>
           </motion.div>
