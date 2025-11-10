@@ -1,10 +1,60 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ParticleAnimation } from './components/ParticleAnimation';
-import { MapPin, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
+import { Switch } from './components/ui/switch';
+
+type Language = 'en' | 'te';
+
+const content = {
+  en: {
+    header: ['Srirasthu!', 'Shubhamasthu !!', 'Avignamasthu !!!'],
+    eventType: 'Wedding Invitation',
+    invitationText: 'We solicit your gracious presence with Your family & friends on the auspicious occasion of the Marriage Celebration of our Youngest Son',
+    groomName: 'Chi. Sharath Kumar Reddy',
+    weds: 'Weds',
+    brideName: 'Chi.La.Sow. Neetha Meghana Reddy',
+    brideParents: '(D/o. Sri Narra Saidi Reddy - Jyothi R/o. Mukundapuram, Mdl. Munagala, Dt. Suryapet.)',
+    sumuhurtham: 'Sumuhurtham:',
+    sumuhurthamTime: 'on Wednesday 26-11-2025 at 10-46 a.m. Dhanasu Lagnam.',
+    lunch: 'Lunch:',
+    lunchTime: 'Tuesday 25-11-2025 at 1-00 p.m.',
+    lunchVenue: 'V.N. Reddy Function Hall, Dandumaisamma Temple, Nimmikal, Mdl. Athmakur (s), Dt. Suryapet.',
+    venue: 'Venue:',
+    venueName: 'Degababu Function Hall, Kodad, Dt. Suryapet.',
+    invitedBy: 'Invited by',
+    hosts: 'Smt & Sri Gogula Vimala - Somi Reddy',
+    hostsAddress: 'Vill. Kandhagatla, Mdl. Athmakur (s), Dt. Suryapet.',
+    compliments: 'With Best Compliments From: Near & Dear...',
+  },
+  te: {
+    header: ['శ్రీరస్తు!', 'శుభమస్తు!', 'అవిఘ్నమస్తు!!!'],
+    eventType: 'వివాహ మహోత్సవ ఆహ్వాన శుభ పత్రిక',
+    invitationText: 'మా కనిష్ఠ పుత్రుడు',
+    groomName: 'చి„ శరత్ కుమార్ రెడ్డి',
+    weds: 'వివాహము',
+    brideName: 'చి॥ల॥సౌ॥ నీత మేఘన రెడ్డి',
+    brideParents: '(సూర్యాపేట జి॥, మునగాల మం॥, ముకుందాపురం వా॥లు శ్రీ నర్రాసైది రెడ్డి - జ్యోతి గార్ల ఏకైక పుత్రిక) తో',
+    sumuhurtham: 'సుముహూర్తం:',
+    sumuhurthamTime: 'తేది. 26-11-2025 బుధవారం ఉ॥గం॥ 10-46ని.లకు',
+    lunch: 'విందు:',
+    lunchTime: 'ది. 25-11-2025 మంగళవారం మ॥ 1-00 లకు',
+    lunchVenue: 'V.N. రెడ్డి ఫంక్షన్ హాల్, దండుమైసమ్మ గుడిదగ్గర, గ్రా॥ నెమ్మికల్, మం॥ ఆత్మకూరు(ఎస్), జి॥ సూర్యాపేట.',
+    venue: 'వివాహ వేదిక :',
+    venueName: 'దేగబాబు ఫంక్షన్ హాల్ కోదాడ, జి|| సూర్యాపేట.',
+    invitedBy: 'మీ ఆగమనాభిలాషులు :',
+    hosts: 'శ్రీమతి & శ్రీ గోగుల విమల - సోమిరెడ్డి',
+    hostsAddress: 'గ్రా॥ కందగట్ల, మం॥ ఆత్మకూరు(ఎస్), జి॥ సూర్యాపేట.',
+    compliments: 'అన్న-వదిన: భరత్ కుమార్ రెడ్డి-ప్రీతిరెడ్డి గార్ల మరియు బంధుమిత్రుల అభినందనలతో',
+  },
+};
 
 export default function App() {
+  const [language, setLanguage] = useState<Language>('en');
+  const t = content[language];
+
   const handleVenueClick = () => {
     window.open('https://maps.app.goo.gl/G2XARim27wVUCk7W9', '_blank');
   };
@@ -28,14 +78,66 @@ export default function App() {
           transition={{ duration: 1, ease: 'easeOut' }}
           className="max-w-2xl w-full"
         >
+          {/* Language Toggle */}
+          <motion.div 
+            className="flex justify-end mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-[#D4AF37]/20 shadow-sm">
+              <span className="text-sm" style={{ 
+                color: language === 'en' ? '#2C1810' : '#8B7355',
+                fontFamily: 'Georgia, serif',
+                fontWeight: language === 'en' ? '600' : '400',
+                transition: 'all 0.3s'
+              }}>
+                English
+              </span>
+              <Switch
+                checked={language === 'te'}
+                onCheckedChange={(checked) => setLanguage(checked ? 'te' : 'en')}
+                className="data-[state=checked]:bg-[#D4AF37]"
+              />
+              <span className="text-sm" style={{ 
+                color: language === 'te' ? '#2C1810' : '#8B7355',
+                fontFamily: 'Georgia, serif',
+                fontWeight: language === 'te' ? '600' : '400',
+                transition: 'all 0.3s'
+              }}>
+                తెలుగు
+              </span>
+            </div>
+          </motion.div>
+
           {/* Main Card */}
           <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-2xl p-8 md:p-12 lg:p-16 border border-[#D4AF37]/20">
+            {/* Header Invocations */}
+            <motion.div 
+              className="text-center mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex justify-center items-center gap-2 flex-wrap">
+                {t.header.map((text, idx) => (
+                  <span key={idx} style={{ 
+                    color: '#8B7355',
+                    fontSize: '0.75rem',
+                    fontFamily: 'Georgia, serif',
+                  }}>
+                    {text}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Decorative top element */}
             <motion.div 
-              className="flex justify-center mb-8"
+              className="flex justify-center mb-6"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.6, type: 'spring' }}
+              transition={{ delay: 0.4, duration: 0.6, type: 'spring' }}
             >
               <div className="flex items-center gap-3">
                 <div className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-[#D4AF37]" />
@@ -53,29 +155,47 @@ export default function App() {
             >
               <p className="tracking-[0.3em] uppercase" style={{ 
                 color: '#8B7355',
-                fontSize: '0.875rem',
+                fontSize: language === 'te' ? '1rem' : '0.875rem',
                 fontFamily: 'Georgia, serif',
-                letterSpacing: '0.3em'
+                letterSpacing: language === 'te' ? '0.1em' : '0.3em'
               }}>
-                Engagement Invitation
+                {t.eventType}
+              </p>
+            </motion.div>
+
+            {/* Invitation Text */}
+            <motion.div 
+              className="text-center mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: language === 'te' ? '0.95rem' : '0.9rem',
+                color: '#5C4A3D',
+                lineHeight: '1.6'
+              }}>
+                {t.invitationText}
               </p>
             </motion.div>
 
             {/* Couple Names */}
             <motion.div 
-              className="text-center mb-12"
+              className="text-center mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
               <h1 style={{ 
                 fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif',
-                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                fontSize: language === 'te' ? 'clamp(1.5rem, 5vw, 2.5rem)' : 'clamp(2rem, 6vw, 3.5rem)',
                 lineHeight: '1.2',
                 color: '#2C1810',
-                marginBottom: '0.5rem'
+                marginBottom: '0.5rem',
+                fontWeight: 'bold'
               }}>
-                Sharath Reddy
+                {t.groomName}
               </h1>
               <div className="flex items-center justify-center my-4">
                 <div className="h-px w-8 bg-[#D4AF37]" />
@@ -84,46 +204,58 @@ export default function App() {
                   fontSize: '1.5rem',
                   fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif'
                 }}>
-                  &
+                  {t.weds}
                 </span>
                 <div className="h-px w-8 bg-[#D4AF37]" />
               </div>
               <h1 style={{ 
                 fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif',
-                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                fontSize: language === 'te' ? 'clamp(1.5rem, 5vw, 2.5rem)' : 'clamp(2rem, 6vw, 3.5rem)',
                 lineHeight: '1.2',
-                color: '#2C1810'
+                color: '#2C1810',
+                fontWeight: 'bold'
               }}>
-                Neetha Meghana
+                {t.brideName}
               </h1>
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                color: '#5C4A3D',
+                marginTop: '0.5rem',
+                lineHeight: '1.5'
+              }}>
+                {t.brideParents}
+              </p>
             </motion.div>
 
-            {/* Hosted By */}
+            {/* Sumuhurtham */}
             <motion.div 
-              className="text-center mb-12"
+              className="text-center mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
+              transition={{ delay: 0.8 }}
             >
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: '0.95rem',
-                color: '#5C4A3D',
-                marginBottom: '0.5rem'
+                fontSize: '1rem',
+                color: '#2C1810',
+                marginBottom: '0.25rem',
+                fontWeight: '600'
               }}>
-                Invited by
+                {t.sumuhurtham}
               </p>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: '1.1rem',
-                color: '#2C1810'
+                fontSize: language === 'te' ? '0.95rem' : '1rem',
+                color: '#5C4A3D',
+                lineHeight: '1.5'
               }}>
-                Gogula Somi Reddy & Vimala
+                {t.sumuhurthamTime}
               </p>
             </motion.div>
 
             {/* Divider */}
-            <div className="flex justify-center mb-10">
+            <div className="flex justify-center mb-8">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]/40" />
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]/60" />
@@ -135,55 +267,116 @@ export default function App() {
 
             {/* Event Details */}
             <motion.div 
-              className="text-center space-y-6 mb-10"
+              className="space-y-6 mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.1 }}
+              transition={{ delay: 0.9 }}
             >
-              <div>
+              {/* Lunch */}
+              <div className="bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4">
                 <p style={{ 
                   fontFamily: 'Georgia, serif',
-                  fontSize: '1.25rem',
-                  color: '#2C1810',
-                  marginBottom: '0.5rem'
+                  fontSize: '0.95rem',
+                  color: '#8B7355',
+                  marginBottom: '0.5rem',
+                  fontWeight: '600'
                 }}>
-                  Friday, 24th October 2025
+                  {t.lunch}
                 </p>
                 <p style={{ 
                   fontFamily: 'Georgia, serif',
-                  fontSize: '1.1rem',
-                  color: '#5C4A3D'
+                  fontSize: '0.9rem',
+                  color: '#2C1810',
+                  marginBottom: '0.5rem'
                 }}>
-                  10:00 AM onwards
+                  {t.lunchTime}
+                </p>
+                <p style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                  color: '#5C4A3D',
+                  lineHeight: '1.5'
+                }}>
+                  {t.lunchVenue}
                 </p>
               </div>
 
               {/* Venue */}
-              <div className="pt-4">
+              <div className="bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4">
                 <button
                   onClick={handleVenueClick}
-                  className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 hover:bg-[#D4AF37]/10 border border-[#D4AF37]/30 hover:border-[#D4AF37]"
+                  className="group w-full text-left"
                 >
-                  <MapPin className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform" />
-                  <div className="text-left">
-                    <p style={{ 
-                      fontFamily: 'Georgia, serif',
-                      fontSize: '0.875rem',
-                      color: '#8B7355',
-                      marginBottom: '0.125rem'
-                    }}>
-                      Venue
-                    </p>
-                    <p className="underline" style={{ 
-                      fontFamily: 'Georgia, serif',
-                      fontSize: '1.05rem',
-                      color: '#2C1810'
-                    }}>
-                      Guduguntla Appaiah Subbamma Kalyana Mandapam - Kodad
-                    </p>
-                  </div>
+                  <p style={{ 
+                    fontFamily: 'Georgia, serif',
+                    fontSize: '0.95rem',
+                    color: '#8B7355',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600'
+                  }}>
+                    {t.venue}
+                  </p>
+                  <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
+                    fontFamily: 'Georgia, serif',
+                    fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                    color: '#2C1810',
+                    lineHeight: '1.5'
+                  }}>
+                    {t.venueName}
+                  </p>
                 </button>
               </div>
+            </motion.div>
+
+            {/* Hosted By */}
+            <motion.div 
+              className="text-center mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0 }}
+            >
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: '0.95rem',
+                color: '#5C4A3D',
+                marginBottom: '0.5rem'
+              }}>
+                {t.invitedBy}
+              </p>
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: '1.1rem',
+                color: '#2C1810',
+                fontWeight: '600',
+                marginBottom: '0.25rem'
+              }}>
+                {t.hosts}
+              </p>
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                color: '#5C4A3D',
+                lineHeight: '1.5'
+              }}>
+                {t.hostsAddress}
+              </p>
+            </motion.div>
+
+            {/* Compliments */}
+            <motion.div 
+              className="text-center mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1 }}
+            >
+              <p style={{ 
+                fontFamily: 'Georgia, serif',
+                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                color: '#8B7355',
+                fontStyle: 'italic'
+              }}>
+                {t.compliments}
+              </p>
             </motion.div>
 
             {/* Decorative bottom element */}
@@ -191,7 +384,7 @@ export default function App() {
               className="flex justify-center mt-8"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 1.3, duration: 0.6, type: 'spring' }}
+              transition={{ delay: 1.2, duration: 0.6, type: 'spring' }}
             >
               <div className="flex items-center gap-2">
                 <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#D4AF37]/50" />
@@ -206,7 +399,7 @@ export default function App() {
             className="text-center mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
+            transition={{ delay: 1.3 }}
           >
             <p style={{ 
               fontFamily: 'var(--font-georgia), Georgia, serif',
