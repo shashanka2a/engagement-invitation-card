@@ -283,64 +283,60 @@ export default function App() {
               transition={{ delay: 0.9 }}
             >
               {/* Groom's Ceremony */}
-              <div className="bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4">
-                <button
-                  onClick={handleGroomCeremonyClick}
-                  className="group w-full text-left"
-                >
-                  <p style={{ 
-                    fontFamily: 'Georgia, serif',
-                    fontSize: '0.95rem',
-                    color: '#8B7355',
-                    marginBottom: '0.5rem',
-                    fontWeight: '600'
-                  }}>
-                    {t.groomCeremony}
-                  </p>
-                  <p style={{ 
-                    fontFamily: 'Georgia, serif',
-                    fontSize: '0.9rem',
-                    color: '#2C1810',
-                    marginBottom: '0.5rem'
-                  }}>
-                    {t.groomCeremonyTime}
-                  </p>
-                  <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
-                    fontFamily: 'Georgia, serif',
-                    fontSize: language === 'te' ? '0.85rem' : '0.875rem',
-                    color: '#2C1810',
-                    lineHeight: '1.5'
-                  }}>
-                    {t.groomCeremonyVenue}
-                  </p>
-                </button>
-              </div>
+              <button
+                onClick={handleGroomCeremonyClick}
+                className="group w-full bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4 text-left cursor-pointer transition-all duration-300 hover:bg-[#FFF8E7]/70 hover:border-[#D4AF37]/40 hover:shadow-md"
+              >
+                <p style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '0.95rem',
+                  color: '#8B7355',
+                  marginBottom: '0.5rem',
+                  fontWeight: '600'
+                }}>
+                  {t.groomCeremony}
+                </p>
+                <p style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '0.9rem',
+                  color: '#2C1810',
+                  marginBottom: '0.5rem'
+                }}>
+                  {t.groomCeremonyTime}
+                </p>
+                <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                  color: '#2C1810',
+                  lineHeight: '1.5'
+                }}>
+                  {t.groomCeremonyVenue}
+                </p>
+              </button>
 
               {/* Venue */}
-              <div className="bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4">
-                <button
-                  onClick={handleVenueClick}
-                  className="group w-full text-left"
-                >
-                  <p style={{ 
-                    fontFamily: 'Georgia, serif',
-                    fontSize: '0.95rem',
-                    color: '#8B7355',
-                    marginBottom: '0.5rem',
-                    fontWeight: '600'
-                  }}>
-                    {t.venue}
-                  </p>
-                  <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
-                    fontFamily: 'Georgia, serif',
-                    fontSize: language === 'te' ? '0.85rem' : '0.875rem',
-                    color: '#2C1810',
-                    lineHeight: '1.5'
-                  }}>
-                    {t.venueName}
-                  </p>
-                </button>
-              </div>
+              <button
+                onClick={handleVenueClick}
+                className="group w-full bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4 text-left cursor-pointer transition-all duration-300 hover:bg-[#FFF8E7]/70 hover:border-[#D4AF37]/40 hover:shadow-md"
+              >
+                <p style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '0.95rem',
+                  color: '#8B7355',
+                  marginBottom: '0.5rem',
+                  fontWeight: '600'
+                }}>
+                  {t.venue}
+                </p>
+                <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
+                  fontFamily: 'Georgia, serif',
+                  fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                  color: '#2C1810',
+                  lineHeight: '1.5'
+                }}>
+                  {t.venueName}
+                </p>
+              </button>
             </motion.div>
 
             {/* Hosted By */}
