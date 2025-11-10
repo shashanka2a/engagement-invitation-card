@@ -21,7 +21,7 @@ const content = {
     groomCeremony: "Groom's Ceremony:",
     groomCeremonyTime: 'Tuesday 25-11-2025 at 1-00 p.m.',
     groomCeremonyVenue: 'V N REDDY GARDENS, 6MF5+Q9P, Nammikal, Enubamla, Telangana 508212',
-    venue: 'Venue:',
+    venue: 'Wedding Venue:',
     venueName: 'Degababu Function Hall, Kodad, Dt. Suryapet.',
     invitedBy: 'Invited by',
     hosts: 'Smt & Sri Gogula Vimala - Somi Reddy',
