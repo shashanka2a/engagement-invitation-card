@@ -18,9 +18,9 @@ const content = {
     brideParents: '(D/o. Sri Narra Saidi Reddy - Jyothi R/o. Mukundapuram, Mdl. Munagala, Dt. Suryapet.)',
     sumuhurtham: 'Sumuhurtham:',
     sumuhurthamTime: 'on Wednesday 26-11-2025 at 10-46 a.m. Dhanasu Lagnam.',
-    lunch: 'Lunch:',
-    lunchTime: 'Tuesday 25-11-2025 at 1-00 p.m.',
-    lunchVenue: 'V.N. Reddy Function Hall, Dandumaisamma Temple, Nimmikal, Mdl. Athmakur (s), Dt. Suryapet.',
+    groomCeremony: "Groom's Ceremony:",
+    groomCeremonyTime: 'Tuesday 25-11-2025 at 1-00 p.m.',
+    groomCeremonyVenue: 'V N REDDY GARDENS, 6MF5+Q9P, Nammikal, Enubamla, Telangana 508212',
     venue: 'Venue:',
     venueName: 'Degababu Function Hall, Kodad, Dt. Suryapet.',
     invitedBy: 'Invited by',
@@ -38,9 +38,9 @@ const content = {
     brideParents: '(సూర్యాపేట జి॥, మునగాల మం॥, ముకుందాపురం వా॥లు శ్రీ నర్రాసైది రెడ్డి - జ్యోతి గార్ల ఏకైక పుత్రిక) తో',
     sumuhurtham: 'సుముహూర్తం:',
     sumuhurthamTime: 'తేది. 26-11-2025 బుధవారం ఉ॥గం॥ 10-46ని.లకు',
-    lunch: 'విందు:',
-    lunchTime: 'ది. 25-11-2025 మంగళవారం మ॥ 1-00 లకు',
-    lunchVenue: 'V.N. రెడ్డి ఫంక్షన్ హాల్, దండుమైసమ్మ గుడిదగ్గర, గ్రా॥ నెమ్మికల్, మం॥ ఆత్మకూరు(ఎస్), జి॥ సూర్యాపేట.',
+    groomCeremony: 'వరుని వేడుక:',
+    groomCeremonyTime: 'ది. 25-11-2025 మంగళవారం మ॥ 1-00 లకు',
+    groomCeremonyVenue: 'V N REDDY GARDENS, 6MF5+Q9P, నమ్మికల్, ఎనుబమ్ల, తెలంగాణ 508212',
     venue: 'వివాహ వేదిక :',
     venueName: 'దేగబాబు ఫంక్షన్ హాల్ కోదాడ, జి|| సూర్యాపేట.',
     invitedBy: 'మీ ఆగమనాభిలాషులు :',
@@ -55,7 +55,11 @@ export default function App() {
   const t = content[language];
 
   const handleVenueClick = () => {
-    window.open('https://maps.app.goo.gl/G2XARim27wVUCk7W9', '_blank');
+    window.open('https://maps.app.goo.gl/kVRARJCbSHXvBGVXA', '_blank');
+  };
+
+  const handleGroomCeremonyClick = () => {
+    window.open('https://maps.app.goo.gl/kVRARJCbSHXvBGVXA', '_blank');
   };
 
   return (
@@ -278,24 +282,38 @@ export default function App() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              {/* Lunch */}
+              {/* Groom's Ceremony */}
               <div className="bg-[#FFF8E7]/50 border border-[#D4AF37]/20 rounded-lg p-4">
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '0.95rem',
-                  color: '#8B7355',
-                  marginBottom: '0.5rem',
-                  fontWeight: '600'
-                }}>
-                  {t.lunch}
-                </p>
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: '0.9rem',
-                  color: '#2C1810'
-                }}>
-                  {t.lunchTime}
-                </p>
+                <button
+                  onClick={handleGroomCeremonyClick}
+                  className="group w-full text-left"
+                >
+                  <p style={{ 
+                    fontFamily: 'Georgia, serif',
+                    fontSize: '0.95rem',
+                    color: '#8B7355',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600'
+                  }}>
+                    {t.groomCeremony}
+                  </p>
+                  <p style={{ 
+                    fontFamily: 'Georgia, serif',
+                    fontSize: '0.9rem',
+                    color: '#2C1810',
+                    marginBottom: '0.5rem'
+                  }}>
+                    {t.groomCeremonyTime}
+                  </p>
+                  <p className="underline group-hover:text-[#D4AF37] transition-colors" style={{ 
+                    fontFamily: 'Georgia, serif',
+                    fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                    color: '#2C1810',
+                    lineHeight: '1.5'
+                  }}>
+                    {t.groomCeremonyVenue}
+                  </p>
+                </button>
               </div>
 
               {/* Venue */}
