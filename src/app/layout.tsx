@@ -9,9 +9,9 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Engagement Invitation - Sharath Reddy & Neetha Meghana",
-  description: "Join us in celebrating the engagement of Sharath Reddy & Neetha Meghana on Friday, 24th October 2025",
-  keywords: ["engagement", "wedding", "invitation", "Sharath Reddy", "Neetha Meghana"],
+  title: "Wedding Invitation - Sharath Kumar Reddy & Neetha Meghana Reddy",
+  description: "Join us in celebrating the wedding of Chi. Sharath Kumar Reddy & Chi.La.Sow. Neetha Meghana Reddy on Wednesday, 26th November 2025",
+  keywords: ["wedding", "invitation", "Sharath Kumar Reddy", "Neetha Meghana Reddy", "Telugu wedding"],
   authors: [{ name: "Knotify" }],
   icons: {
     icon: "/ring-favicon.svg",
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     apple: "/ring-favicon.svg",
   },
   openGraph: {
-    title: "Engagement Invitation - Sharath Reddy & Neetha Meghana",
-    description: "Join us in celebrating the engagement of Sharath Reddy & Neetha Meghana on Friday, 24th October 2025",
+    title: "Wedding Invitation - Sharath Kumar Reddy & Neetha Meghana Reddy",
+    description: "Join us in celebrating the wedding of Chi. Sharath Kumar Reddy & Chi.La.Sow. Neetha Meghana Reddy on Wednesday, 26th November 2025",
     type: "website",
   },
 };

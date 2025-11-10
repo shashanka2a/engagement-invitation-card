@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ParticleAnimation } from './components/ParticleAnimation';
 import { Heart } from 'lucide-react';
-import { Switch } from './components/ui/switch';
 
 type Language = 'en' | 'te';
 
@@ -85,33 +84,40 @@ export default function App() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-[#D4AF37]/20 shadow-sm">
-              <span className="text-sm" style={{ 
-                color: language === 'en' ? '#2C1810' : '#8B7355',
-                fontFamily: 'Georgia, serif',
-                fontWeight: language === 'en' ? '600' : '400',
-                transition: 'all 0.3s'
-              }}>
+            <div className="relative inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full p-1 border border-[#D4AF37]/20 shadow-sm">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`relative z-10 px-4 py-1.5 rounded-full text-sm transition-all duration-300 min-w-[70px] ${
+                  language === 'en' 
+                    ? 'text-[#2C1810] font-semibold' 
+                    : 'text-[#8B7355] font-normal'
+                }`}
+                style={{ fontFamily: 'Georgia, serif' }}
+              >
                 English
-              </span>
-              <Switch
-                checked={language === 'te'}
-                onCheckedChange={(checked) => setLanguage(checked ? 'te' : 'en')}
-                className="data-[state=checked]:bg-[#D4AF37]"
-              />
-              <span className="text-sm" style={{ 
-                color: language === 'te' ? '#2C1810' : '#8B7355',
-                fontFamily: 'Georgia, serif',
-                fontWeight: language === 'te' ? '600' : '400',
-                transition: 'all 0.3s'
-              }}>
+              </button>
+              <button
+                onClick={() => setLanguage('te')}
+                className={`relative z-10 px-4 py-1.5 rounded-full text-sm transition-all duration-300 min-w-[70px] ${
+                  language === 'te' 
+                    ? 'text-[#2C1810] font-semibold' 
+                    : 'text-[#8B7355] font-normal'
+                }`}
+                style={{ fontFamily: 'Georgia, serif' }}
+              >
                 తెలుగు
-              </span>
+              </button>
+              <div
+                className={`absolute top-1 bottom-1 rounded-full bg-[#D4AF37]/30 transition-all duration-300 ease-in-out ${
+                  language === 'en' ? 'left-1 right-[calc(50%+2px)]' : 'left-[calc(50%+2px)] right-1'
+                }`}
+                style={{ width: 'calc(50% - 4px)' }}
+              />
             </div>
           </motion.div>
 
           {/* Main Card */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-2xl p-8 md:p-12 lg:p-16 border border-[#D4AF37]/20">
+          <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-2xl p-6 md:p-10 lg:p-12 border border-[#D4AF37]/20">
             {/* Header Invocations */}
             <motion.div 
               className="text-center mb-4"
@@ -165,16 +171,16 @@ export default function App() {
 
             {/* Invitation Text */}
             <motion.div 
-              className="text-center mb-6"
+              className="text-center mb-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: language === 'te' ? '0.95rem' : '0.9rem',
+                fontSize: language === 'te' ? '0.9rem' : '0.85rem',
                 color: '#5C4A3D',
-                lineHeight: '1.6'
+                lineHeight: '1.5'
               }}>
                 {t.invitationText}
               </p>
@@ -182,14 +188,14 @@ export default function App() {
 
             {/* Couple Names */}
             <motion.div 
-              className="text-center mb-8"
+              className="text-center mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
               <h1 style={{ 
                 fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif',
-                fontSize: language === 'te' ? 'clamp(1.5rem, 5vw, 2.5rem)' : 'clamp(2rem, 6vw, 3.5rem)',
+                fontSize: language === 'te' ? 'clamp(1.25rem, 4vw, 2rem)' : 'clamp(1.5rem, 5vw, 2.75rem)',
                 lineHeight: '1.2',
                 color: '#2C1810',
                 marginBottom: '0.5rem',
@@ -197,11 +203,11 @@ export default function App() {
               }}>
                 {t.groomName}
               </h1>
-              <div className="flex items-center justify-center my-4">
+              <div className="flex items-center justify-center my-3">
                 <div className="h-px w-8 bg-[#D4AF37]" />
                 <span className="mx-3" style={{ 
                   color: '#D4AF37',
-                  fontSize: '1.5rem',
+                  fontSize: '1.25rem',
                   fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif'
                 }}>
                   {t.weds}
@@ -210,7 +216,7 @@ export default function App() {
               </div>
               <h1 style={{ 
                 fontFamily: 'var(--font-playfair), Playfair Display, Georgia, serif',
-                fontSize: language === 'te' ? 'clamp(1.5rem, 5vw, 2.5rem)' : 'clamp(2rem, 6vw, 3.5rem)',
+                fontSize: language === 'te' ? 'clamp(1.25rem, 4vw, 2rem)' : 'clamp(1.5rem, 5vw, 2.75rem)',
                 lineHeight: '1.2',
                 color: '#2C1810',
                 fontWeight: 'bold'
@@ -219,10 +225,10 @@ export default function App() {
               </h1>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                fontSize: language === 'te' ? '0.8rem' : '0.8rem',
                 color: '#5C4A3D',
                 marginTop: '0.5rem',
-                lineHeight: '1.5'
+                lineHeight: '1.4'
               }}>
                 {t.brideParents}
               </p>
@@ -230,14 +236,14 @@ export default function App() {
 
             {/* Sumuhurtham */}
             <motion.div 
-              className="text-center mb-6"
+              className="text-center mb-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
             >
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: '1rem',
+                fontSize: '0.95rem',
                 color: '#2C1810',
                 marginBottom: '0.25rem',
                 fontWeight: '600'
@@ -246,16 +252,16 @@ export default function App() {
               </p>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: language === 'te' ? '0.95rem' : '1rem',
+                fontSize: language === 'te' ? '0.9rem' : '0.95rem',
                 color: '#5C4A3D',
-                lineHeight: '1.5'
+                lineHeight: '1.4'
               }}>
                 {t.sumuhurthamTime}
               </p>
             </motion.div>
 
             {/* Divider */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]/40" />
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]/60" />
@@ -267,7 +273,7 @@ export default function App() {
 
             {/* Event Details */}
             <motion.div 
-              className="space-y-6 mb-8"
+              className="space-y-4 mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
@@ -286,18 +292,9 @@ export default function App() {
                 <p style={{ 
                   fontFamily: 'Georgia, serif',
                   fontSize: '0.9rem',
-                  color: '#2C1810',
-                  marginBottom: '0.5rem'
+                  color: '#2C1810'
                 }}>
                   {t.lunchTime}
-                </p>
-                <p style={{ 
-                  fontFamily: 'Georgia, serif',
-                  fontSize: language === 'te' ? '0.85rem' : '0.875rem',
-                  color: '#5C4A3D',
-                  lineHeight: '1.5'
-                }}>
-                  {t.lunchVenue}
                 </p>
               </div>
 
@@ -330,33 +327,33 @@ export default function App() {
 
             {/* Hosted By */}
             <motion.div 
-              className="text-center mb-6"
+              className="text-center mb-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0 }}
             >
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: '0.95rem',
+                fontSize: '0.9rem',
                 color: '#5C4A3D',
-                marginBottom: '0.5rem'
+                marginBottom: '0.4rem'
               }}>
                 {t.invitedBy}
               </p>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: '1.1rem',
+                fontSize: '1rem',
                 color: '#2C1810',
                 fontWeight: '600',
-                marginBottom: '0.25rem'
+                marginBottom: '0.2rem'
               }}>
                 {t.hosts}
               </p>
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                fontSize: language === 'te' ? '0.8rem' : '0.8rem',
                 color: '#5C4A3D',
-                lineHeight: '1.5'
+                lineHeight: '1.4'
               }}>
                 {t.hostsAddress}
               </p>
@@ -364,14 +361,14 @@ export default function App() {
 
             {/* Compliments */}
             <motion.div 
-              className="text-center mb-4"
+              className="text-center mb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
             >
               <p style={{ 
                 fontFamily: 'Georgia, serif',
-                fontSize: language === 'te' ? '0.85rem' : '0.875rem',
+                fontSize: language === 'te' ? '0.8rem' : '0.8rem',
                 color: '#8B7355',
                 fontStyle: 'italic'
               }}>
